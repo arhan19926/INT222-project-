@@ -6,16 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Email Sender</title>
 </head>
-<script src="mailer.js"></script>
-<body style="background-image: url(paper.png);background-repeat: no-repeat;background-size: cover;">
+<body style="background-image: url('paper.png');background-repeat: no-repeat;background-size: cover;">
     <h1 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;color: bisque;" >Welcome to the Mailgun Email sender</h1>
     <br><br><br><br><br>
-    <form action="home.html">
+    <form action="/confirmation" method="post">
         <label for="fname">First name:</label><br>
         <input type="text" id="fname" name="fname" value="John"><br>
         <label for="lname">Last name:</label><br>
         <input type="text" id="lname" name="lname" value="Doe"><br><br>
-        <input type="text" placeholder="Enter the reciever's Email" style="border: blueviolet;" name="mail1" >
+        <input type="text" placeholder="Enter the reciever's Email" style="border: blueviolet;" name="toMail" >
         <input type="submit" value="Submit">
       </form> 
     

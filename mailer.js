@@ -1,8 +1,16 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
+const { homedir } = require('os');
 const router = express.Router();
 const path = require('path');
 const app = express();
+var bodyParser = require('body-parser');
+
+// declare vars
+var fromMail = 'sender.email19926@gmail.com';
+var toMail = 'ali.arhan19926@gmail.com';
+var subject = 'Arhans project';
+var text = "hello! " 
 
 router.get('/',function(req,res){
 	res.sendFile(path.join(__dirname+'/home.html'));
@@ -14,16 +22,21 @@ router.get('/',function(req,res){
 
 console.log('Running at Port 3000'); 
   
-app.get('/',(req,res)=>{
-	res.send('hello');
-	
-})
 
-// declare vars
-var fromMail = 'sender.email19926@gmail.com';
-var toMail = document.getElementsByName('mail1').value;
-var subject = 'Arhans project';
-var text = "hello! " 
+
+app.use(express.json());
+app.use(express.urlencoded({
+  extended: true
+}));
+
+app.use(express.static(path.join(__dirname,'./public')));
+
+app.post('/confirmation', function(req,res){
+	var toMail =document.getElementsByName(toMail);
+	console.log(toMail);
+
+  });
+
 
 // auth
 const transporter = nodemailer.createTransport({

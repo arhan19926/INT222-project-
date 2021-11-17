@@ -5,38 +5,30 @@ const router = express.Router();
 const path = require('path');
 const app = express();
 var bodyParser = require('body-parser');
+var http = require("http");
+var fs = require("fs");
+
+http.createServer((req, res) => {
+if (req.url == "/") {
+fs.readFile("test.txt", (err, data) => {
+if (err)
+{
+res.write('Contents could not be found');
+}
+else
+{
+res.write(data.toString());
+}
+res.end();
+});
+}
+}).listen(8088);
 
 // declare vars
 var fromMail = 'sender.email19926@gmail.com';
-var toMail = 'ali.arhan19926@gmail.com';
+var toMail ='' ;
 var subject = 'Arhans project';
 var text = "hello! " 
-
-router.get('/',function(req,res){
-	res.sendFile(path.join(__dirname+'/home.html'));
-	//__dirname resolves to our project folder.
-  });
-
- app.use('/',router);
- app.listen(process.env.port || 3000);
-
-console.log('Running at Port 3000'); 
-  
-
-
-app.use(express.json());
-app.use(express.urlencoded({
-  extended: true
-}));
-
-app.use(express.static(path.join(__dirname,'./public')));
-
-app.post('/confirmation', function(req,res){
-	var toMail =document.getElementsByName(toMail);
-	console.log(toMail);
-
-  });
-
 
 // auth
 const transporter = nodemailer.createTransport({

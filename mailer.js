@@ -14,15 +14,17 @@ fs.readFile("test.txt", (err, data) => {
 if (err)
 {
 res.write('Contents could not be found');
+res.end();
 }
 else
 {
 res.write(data.toString());
-}
 res.end();
+}
 });
 }
 }).listen(8088);
+
 
 // declare vars
 var fromMail = 'sender.email19926@gmail.com';
@@ -30,6 +32,9 @@ var toMail ='' ;
 var subject = 'Arhans project';
 var text = "hello! " 
 
+var prompt = require('prompt-sync')();
+var toMail = prompt("Enter the recievers email?");
+console.log("Sending Email to "+toMail);
 // auth
 const transporter = nodemailer.createTransport({
 	service: 'gmail',

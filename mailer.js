@@ -1,31 +1,7 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
-const { homedir } = require('os');
-const router = express.Router();
-const path = require('path');
 const app = express();
 var bodyParser = require('body-parser');
-var http = require("http");
-var fs = require("fs");
-
-http.createServer((req, res) => {
-if (req.url == "/") {
-fs.readFile("test.txt", (err, data) => {
-if (err)
-{
-res.write('Contents could not be found');
-res.end();
-}
-else
-{
-res.write(data.toString());
-res.end();
-}
-});
-}
-}).listen(8088);
-
-
 // declare vars
 var fromMail = 'sender.email19926@gmail.com';
 var toMail ='' ;
